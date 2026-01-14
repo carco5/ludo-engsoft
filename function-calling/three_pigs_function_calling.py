@@ -1,3 +1,5 @@
+
+
 """
 🐷 OpenAI Function Calling Demo: The Three Little Pigs 🐺
 
