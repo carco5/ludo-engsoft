@@ -8,14 +8,14 @@ This is the **public student-facing companion repo** for the [BSC Agents Course]
 
 | Folder | What's there |
 |---|---|
-| [`week-01/`](./week-01/) | **Week 1 — Foundations.** Tokenization, base-vs-aligned model comparison (GPT-2 vs Qwen3-1.7B), and the first API call via `context-explorer`. |
-| [`vm/`](./vm/) | **Course VM setup.** Ubuntu Server 24.04 VirtualBox image with the BSC tool baseline (uv, `llm`, transformers, torch-CPU, opencode, gh). Instructors build the OVA; students import. |
+| [`week-01/`](./week-01/) | **Week 1 — Foundations.** Tokenization, base-vs-aligned model comparison (GPT-2 vs Qwen3-1.7B), and the first API call via the [`context-explorer`](./week-01/demos/context-explorer/) demo. |
+| [`pre-course/`](./pre-course/) | **Before you start.** The [VM setup guide](./pre-course/vm-setup.md) (Ubuntu Server 24.04 + the BSC tool baseline: uv, `llm`, transformers, torch-CPU, opencode, gh) and a [command cheatsheet](./pre-course/cheatsheet.md). |
 
 More weeks land here as the course progresses.
 
-## 🧰 Standalone demos (used across weeks)
+## 🧰 Demos
 
-### Context Explorer — [`./context-explorer/`](./context-explorer/)
+### Context Explorer — [`week-01/demos/context-explorer/`](./week-01/demos/context-explorer/)
 
 A simple interactive demo to visualize how LLM conversation context works.
 
@@ -25,7 +25,7 @@ A simple interactive demo to visualize how LLM conversation context works.
 - Token usage and costs
 
 ```bash
-cd context-explorer
+cd week-01/demos/context-explorer
 uv venv && source .venv/bin/activate && uv sync
 python context_explorer.py
 ```

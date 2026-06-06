@@ -1,0 +1,32 @@
+"""
+Call an LLM through the OpenAI-compatible Chat Completions API.
+
+Runs UNCHANGED against:
+  - your local Ollama          (the default below — no key, no money, no internet)
+  - OpenAI / OpenRouter / Groq (set OPENAI_BASE_URL + OPENAI_API_KEY in .env)
+
+The wire format is the same everywhere. Only the .env changes.
+"""
+import os
+
+from openai import OpenAI
+
+client = OpenAI(
+    base_url=os.environ.get("OPENAI_BASE_URL", "http://localhost:11434/v1"),
+    api_key=os.environ.get("OPENAI_API_KEY", "ollama"),  # Ollama ignores the value
+)
+model = os.environ.get("MODEL", "ministral-3:8b")
+
+resp = client.chat.completions.create(
+    model=model,
+    messages=[
+        {"role": "system", "content": "You are a terse assistant."},
+        {"role": "user",   "content": "Say hello in one sentence."},
+    ],
+    temperature=0.7,
+)
+
+print(resp.choices[0].message.content)
+print("---")
+print("usage        :", resp.usage)             # prompt / completion / total tokens
+print("finish_reason:", resp.choices[0].finish_reason)

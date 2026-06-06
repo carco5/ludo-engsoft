@@ -1,7 +1,5 @@
 <!-- =============================================================================================================== -->
-<!-- Plan de Generación de Talento Digital 2025 - INTIA/UEx                                                          -->
-<!-- Actividad financiada por la Consejería de Economía, Empleo y Transformación Digital de la Junta de Extremadura  -->
-<!-- Dirección General de Digitalización Regional de la Junta de Extremadura                                         -->
+<!-- Universitat Politècnica de Catalunya (UPC)                                                                      -->
 <!-- =============================================================================================================== -->
 
 # 📚 Context Explorer
@@ -40,7 +38,7 @@ MODEL=gpt-4.1-mini
 ## Run
 
 ```bash
-python context_explorer.py
+uv run context_explorer.py
 ```
 
 ## Key Concepts
@@ -53,8 +51,8 @@ python context_explorer.py
 
 ## 📖 License
 
-Public Domain
+This repository is licensed under the [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](LICENSE) (`CC BY-NC-SA 4.0`).
 
 ## 👤 Author
 
-[@granludo](https://github.com/granludo) - Marc Alier
+[@granludo](https://github.com/granludo) - Marc Alier, Universitat Politècnica de Catalunya (UPC)

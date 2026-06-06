@@ -1,7 +1,5 @@
 # =============================================================================================================== #
-# Plan de Generación de Talento Digital 2025 - INTIA/UEx                                                          #
-# Actividad financiada por la Consejería de Economía, Empleo y Transformación Digital de la Junta de Extremadura  #
-# Dirección General de Digitalización Regional de la Junta de Extremadura                                         #
+# Universitat Politècnica de Catalunya (UPC)                                                                      #
 # =============================================================================================================== #
 
 """
@@ -154,6 +152,16 @@ def run_chat():
         assistant_content = response.choices[0].message.content
         
         # Show response
+        usage_data = {
+            "prompt_tokens": response.usage.prompt_tokens,
+            "completion_tokens": response.usage.completion_tokens,
+            "total_tokens": response.usage.total_tokens
+        }
+        prompt_tokens_details = getattr(response.usage, "prompt_tokens_details", None)
+        cached_tokens = getattr(prompt_tokens_details, "cached_tokens", None)
+        if cached_tokens is not None:
+            usage_data["cached_tokens"] = cached_tokens
+
         response_data = {
             "id": response.id,
             "model": response.model,
@@ -162,11 +170,7 @@ def run_chat():
                 "role": "assistant",
                 "content": assistant_content
             },
-            "usage": {
-                "prompt_tokens": response.usage.prompt_tokens,
-                "completion_tokens": response.usage.completion_tokens,
-                "total_tokens": response.usage.total_tokens
-            }
+            "usage": usage_data
         }
         console.print()
         console.print(show_api_response(response_data))
