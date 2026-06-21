@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EASY-CHATGPT</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+  <header>
+    <h1>EASY-CHATGPT</h1>
+    <span id="model-badge" class="badge">model: …</span>
+    <label class="stream-toggle"><input type="checkbox" id="stream-toggle" checked> streaming</label>
+  </header>
+
+  <main>
+    <section id="chat-pane">
+      <div id="messages"></div>
+      <form id="chat-form">
+        <textarea id="input" placeholder="Type a message and press Send…" rows="2"></textarea>
+        <button type="submit" id="send">Send</button>
+      </form>
+    </section>
+
+    <aside id="context-pane">
+      <h2>Context view</h2>
+      <div class="usage" id="usage">tokens: —</div>
+      <h3>Messages sent to the model</h3>
+      <pre id="context-json">[]</pre>
+    </aside>
+  </main>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
