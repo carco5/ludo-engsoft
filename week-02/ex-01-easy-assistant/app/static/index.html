@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EASY-ASSISTANT</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+  <header>
+    <h1>EASY-ASSISTANT</h1>
+    <span id="model-badge" class="badge">model: …</span>
+  </header>
+
+  <main>
+    <aside id="assistants-pane">
+      <h2>Assistants</h2>
+      <ul id="assistant-list"></ul>
+      <h3>New assistant</h3>
+      <form id="create-form">
+        <input id="a-name" placeholder="Name" required>
+        <textarea id="a-system" rows="3" placeholder="System prompt" required></textarea>
+        <textarea id="a-template" rows="6" title="Must contain {context} and {user_input}"></textarea>
+        <button type="submit">Create</button>
+      </form>
+      <h3>Document</h3>
+      <input type="file" id="doc-file" accept=".txt,.md,text/plain">
+      <button id="doc-upload">Upload to assistant</button>
+      <div id="doc-info" class="muted">no document</div>
+    </aside>
+
+    <section id="chat-pane">
+      <div id="messages"></div>
+      <form id="chat-form">
+        <textarea id="input" placeholder="Type a message and press Send…" rows="2"></textarea>
+        <button type="submit" id="send">Send</button>
+      </form>
+    </section>
+
+    <aside id="context-pane">
+      <h2>What was actually sent</h2>
+      <div class="usage" id="usage">tokens: —</div>
+      <h3>Filled prompt (template + whole file + question)</h3>
+      <pre id="augmented">—</pre>
+      <h3>Messages array</h3>
+      <pre id="context-json">[]</pre>
+    </aside>
+  </main>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

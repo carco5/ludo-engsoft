@@ -1,0 +1,13 @@
+services:
+  easy-assistant:
+    build: .
+    ports:
+      - "6662:6662"
+    environment:
+      - OPENAI_BASE_URL=${OPENAI_BASE_URL:-http://host.docker.internal:11434/v1}
+      - OPENAI_API_KEY=${OPENAI_API_KEY:-ollama}
+      - MODEL=${MODEL:-qwen3:1.7b}
+    volumes:
+      - ./data:/app/data
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
