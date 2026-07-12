@@ -1,0 +1,16 @@
+[project]
+name = "easy-rag"
+version = "0.1.0"
+description = "Week 2 · Final Project — EASY-RAG: many documents, one collection per assistant, retrieval by meaning"
+requires-python = ">=3.11"
+dependencies = [
+    "collections-manager",
+    "fastapi>=0.110",
+    "uvicorn[standard]>=0.29",
+    "openai>=1.30",
+    "python-multipart>=0.0.9",
+    "markitdown==0.1.6",
+]
+
+[tool.uv.sources]
+collections-manager = { path = "../collections-manager", editable = true }

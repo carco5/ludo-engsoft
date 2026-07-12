@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EASY-RAG</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+  <header>
+    <h1>EASY-RAG</h1>
+    <span id="model-badge" class="badge">model: …</span>
+    <span id="retrieval-badge" class="badge">retrieval: …</span>
+  </header>
+
+  <main>
+    <aside id="assistants-pane">
+      <h2>Assistants</h2>
+      <ul id="assistant-list"></ul>
+      <h3>New assistant</h3>
+      <form id="create-form">
+        <input id="a-name" placeholder="Name" required>
+        <textarea id="a-system" rows="3" placeholder="System prompt" required></textarea>
+        <textarea id="a-template" rows="6" title="Must contain {context} and {user_input}"></textarea>
+        <button type="submit">Create</button>
+      </form>
+      <h3>Documents</h3>
+      <ul id="doc-list"></ul>
+      <input type="file" id="doc-file">
+      <button id="doc-upload">Upload &amp; ingest</button>
+      <div id="doc-status" class="muted"></div>
+    </aside>
+
+    <section id="chat-pane">
+      <div id="messages"></div>
+      <form id="chat-form">
+        <textarea id="input" placeholder="Type a message and press Send…" rows="2"></textarea>
+        <button type="submit" id="send">Send</button>
+      </form>
+    </section>
+
+    <aside id="context-pane">
+      <h2>What was actually sent</h2>
+      <div class="usage" id="usage">tokens: —</div>
+      <h3>Retrieval</h3>
+      <div id="retrieval-info" class="muted">—</div>
+      <h3>Filled prompt (retrieved chunks + question)</h3>
+      <pre id="augmented">—</pre>
+    </aside>
+  </main>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
