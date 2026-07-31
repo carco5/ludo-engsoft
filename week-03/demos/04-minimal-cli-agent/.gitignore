@@ -1,6 +1,5 @@
 .env
 .venv/
-sessions/
-_test_sessions/
+database.db
 __pycache__/
 *.pyc
