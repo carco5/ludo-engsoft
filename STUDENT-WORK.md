@@ -10,7 +10,7 @@ mentioning it.
 
 ---
 
-## Week 1 — Transformers, LLMs and the API call
+## Week 1 — Transformers, LLMs and the API call · [week index](week-01/MY-WORK.md)
 
 | # | What I built | Where | Report |
 |---|---|---|---|
@@ -20,7 +20,7 @@ mentioning it.
 **Measured:** the same paragraph costs **+66 % tokens in Spanish** than in English with the
 GPT-2 tokenizer — the multilingual penalty, on my own text.
 
-## Week 2 — RAG
+## Week 2 — RAG · [week index](week-02/MY-WORK.md)
 
 | # | What I built | Where | Report |
 |---|---|---|---|
@@ -28,14 +28,15 @@ GPT-2 tokenizer — the multilingual penalty, on my own text.
 | 2–3 | Embeddings explorer, collections, ingestion and threshold experiments | [`week-02/`](week-02/) | [`entrega-w2-ex2.md`](week-02/entrega-w2-ex2.md) · [`entrega-w2-ex3.md`](week-02/entrega-w2-ex3.md) |
 | Final | **EASY-RAG** — dynamic RAG: upload → markitdown → chunking (`sections(level=2)` with a char fallback) → one Chroma collection per assistant → top-K + threshold retrieval, answers that **link back to the source** and refuse honestly when nothing scores high enough | [`week-02/easy-rag/`](week-02/easy-rag/) | [`entrega-w2-final.md`](week-02/easy-rag/entrega-w2-final.md) |
 
-**Measured:** on my own corpus with `nomic-embed-text`, off-topic questions reach up to
-**0.54** cosine while real answers sit at **0.57–0.81** — so I set the rejection threshold at
-**0.55**, from my numbers rather than from a tutorial's.
+**Measured:** on my own corpus with `nomic-embed-text`, an off-topic question tops out at **0.462**
+in English but **0.539** in Spanish — sharing the corpus's language raises similarity by itself —
+while a real question's chunks land at **0.61–0.807**. So I set the rejection threshold at
+**0.55**, in the gap, from my numbers rather than from a tutorial's.
 
 **Found the hard way:** embeddings capture *topic*, not *polarity* — *"I love this film"* and
 *"I hate this film"* score **0.706** against each other, each the other's nearest neighbour.
 
-## Week 3 — Agents
+## Week 3 — Agents · [week index](week-03/MY-WORK.md)
 
 | # | What I built | Where | Report |
 |---|---|---|---|
