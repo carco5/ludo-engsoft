@@ -1,5 +1,9 @@
 # 🎓 Software Engineering Educational Demos
 
+> **This fork is Josep Coll's coursework.** The exercises, apps and measurements I built for the
+> course are indexed in **[STUDENT-WORK.md](STUDENT-WORK.md)** — start there. Everything under
+> `demos/` and the provided tools belong to the upstream course repo (Prof. Marc Alier).
+
 A collection of interactive demos and course materials for teaching software engineering concepts, focusing on LLM APIs and AI integration.
 
 This is the **public student-facing companion repo** for the [BSC Agents Course](https://www.bsc.es/) (UPC × BSC AI Factory) and the [AI-Augmented Software Engineering](https://github.com/granludo/) course. Standalone tools at the repo root are reused across multiple weeks and courses; course-specific exercises live under `week-NN/` folders.
