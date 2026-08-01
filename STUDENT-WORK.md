@@ -1,8 +1,9 @@
 # Josep Coll — coursework
 
 My work for **Transformers, LLMs, RAG and Agents: From Theory to Production** (BSC × UPC,
-Prof. Marc Alier). This repository is a fork of the course repo: `demos/` folders and the
-provided tools are the professor's; everything listed below is mine.
+Prof. Marc Alier). This repository is my working copy of the course repo, kept in sync with
+upstream so my exercises sit next to the demos they build on: the `demos/` folders and the
+provided tools are the professor's — everything listed below is mine.
 
 Every exercise runs **locally on a CPU-only WSL box against Ollama** — no API key, no money.
 That constraint shaped a lot of the results, and where it did, I measured it instead of

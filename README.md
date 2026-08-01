@@ -1,8 +1,13 @@
 # 🎓 Software Engineering Educational Demos
 
-> **This fork is Josep Coll's coursework.** The exercises, apps and measurements I built for the
-> course are indexed in **[STUDENT-WORK.md](STUDENT-WORK.md)** — start there. Everything under
-> `demos/` and the provided tools belong to the upstream course repo (Prof. Marc Alier).
+> **This copy holds Josep Coll's coursework** for the BSC × UPC course *Transformers, LLMs, RAG
+> and Agents: From Theory to Production*. The exercises, apps and measurements I built are
+> indexed in **[STUDENT-WORK.md](STUDENT-WORK.md)** — start there.
+>
+> The rest of this README, everything under `demos/`, and the provided tools are the upstream
+> course repository by **Prof. Marc Alier** (<https://github.com/granludo/ludo-engsoft>), kept in
+> sync here so my exercises sit next to the demos they build on. Credit for that material is his;
+> what is mine is listed in the index above.
 
 A collection of interactive demos and course materials for teaching software engineering concepts, focusing on LLM APIs and AI integration.
 
