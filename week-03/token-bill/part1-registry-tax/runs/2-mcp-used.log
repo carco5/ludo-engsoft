@@ -1,0 +1,10 @@
+Processing request of type ListToolsRequest
+Processing request of type CallToolRequest
+── the MCP registry the model receives ──
+  tool: get_robot_spec  —  Return the spec sheet for an Acme Robotics model (e.g. 'Pallet Pup', 'Shelf Cat').
+
+  prompt_tokens: 162
+  → MCP call: get_robot_spec({'model': 'Pallet Pup'})
+  ← MCP result: Pallet Pup: top speed 2.4 m/s, 9 h battery, carries up to 600 kg, runs PupOS.
+  prompt_tokens: 335
+✅ The top speed of the Pallet Pup is **2.4 meters per second**. It also has a 9-hour battery life, can carry up to 600 kg, and runs on PupOS. Let me know if you need further details!

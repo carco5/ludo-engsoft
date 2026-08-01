@@ -1,0 +1,7 @@
+⚙️  model=qwen3:1.7b  endpoint=http://localhost:11434/v1  db=database.db
+
+── LLM call #1 ──
+prompt_tokens: 271
+
+✅ Final answer:
+The capital of France is Paris.

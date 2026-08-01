@@ -1,0 +1,73 @@
+Processing request of type ListToolsRequest
+── the MCP registry the model receives ──
+  tool: browser_navigate  —  Navigate the browser to a URL and return a snapshot of the page that
+    loaded....
+  tool: browser_snapshot  —  Capture an accessibility snapshot of the current page: every element the
+    mod...
+  tool: browser_type  —  Type text into an editable element of the page. `ref` is the [ref=eN]
+    handle...
+  tool: browser_click  —  Click an element of the page. `ref` is the [ref=eN] handle of the element
+    as...
+  registry size on the wire: 1670 chars
+
+── call #1: prompt_tokens=610 completion_tokens=28
+  → MCP call: browser_navigate({'url': 'http://localhost:6673/thread/1'})
+Processing request of type CallToolRequest
+  ← MCP result: 977 chars
+── call #2: prompt_tokens=1048 completion_tokens=27
+  → MCP call: browser_type({'ref': 'e9', 'text': 'hello from my browser agent'})
+Processing request of type CallToolRequest
+  ← MCP result: 1004 chars
+── call #3: prompt_tokens=1496 completion_tokens=19
+  → MCP call: browser_click({'ref': 'e10'})
+Processing request of type CallToolRequest
+  ← MCP result: 1063 chars
+── call #4: prompt_tokens=1961 completion_tokens=18
+  → MCP call: browser_click({'ref': 'e10'})
+Processing request of type CallToolRequest
+  ← MCP result: 164 chars
+── call #5: prompt_tokens=2101 completion_tokens=19
+  → MCP call: browser_click({'ref': 'e10'})
+Processing request of type CallToolRequest
+  ← MCP result: 322 chars
+── call #6: prompt_tokens=2282 completion_tokens=27
+  → MCP call: browser_type({'ref': 'e9', 'text': 'hello from my browser agent'})
+Processing request of type CallToolRequest
+  ← MCP result: 320 chars
+── call #7: prompt_tokens=2469 completion_tokens=18
+  → MCP call: browser_click({'ref': 'e10'})
+Processing request of type CallToolRequest
+  ← MCP result: 322 chars
+── call #8: prompt_tokens=2648 completion_tokens=18
+  → MCP call: browser_click({'ref': 'e10'})
+Processing request of type CallToolRequest
+  ← MCP result: 322 chars
+── call #9: prompt_tokens=2827 completion_tokens=18
+  → MCP call: browser_click({'ref': 'e10'})
+Processing request of type CallToolRequest
+  ← MCP result: 322 chars
+── call #10: prompt_tokens=3006 completion_tokens=18
+  → MCP call: browser_click({'ref': 'e10'})
+Processing request of type CallToolRequest
+  ← MCP result: 322 chars
+── call #11: prompt_tokens=3186 completion_tokens=18
+  → MCP call: browser_click({'ref': 'e10'})
+Processing request of type CallToolRequest
+  ← MCP result: 322 chars
+── call #12: prompt_tokens=3368 completion_tokens=19
+  → MCP call: browser_click({'ref': 'e10'})
+Processing request of type CallToolRequest
+Exception ignored in: <function BaseSubprocessTransport.__del__ at 0x70d23e9f5e40>
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/asyncio/base_subprocess.py", line 126, in __del__
+  File "/usr/lib/python3.12/asyncio/base_subprocess.py", line 104, in close
+  File "/usr/lib/python3.12/asyncio/unix_events.py", line 767, in close
+  File "/usr/lib/python3.12/asyncio/unix_events.py", line 753, in write_eof
+  File "/usr/lib/python3.12/asyncio/base_events.py", line 795, in call_soon
+  File "/usr/lib/python3.12/asyncio/base_events.py", line 541, in _check_closed
+RuntimeError: Event loop is closed
+  ← MCP result: 322 chars
+⛔ stopped: hit the 12-turn budget
+
+TOTAL prompt_tokens=27002 completion_tokens=247 total=27249
+EXIT=0

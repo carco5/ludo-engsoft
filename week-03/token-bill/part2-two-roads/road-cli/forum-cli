@@ -1,0 +1,70 @@
+#!/usr/bin/env python3
+# Week 3 · Exercise 2, Part 2 — Josep Coll
+"""forum-cli — read and post to the course forum from the command line.
+
+This is road one. The whole point of the exercise is that a model already knows
+how to read a --help screen: nothing about this tool has to ride in the context
+until the agent decides it needs it.
+"""
+import argparse
+import json
+import os
+import sys
+import urllib.error
+import urllib.request
+
+BASE = os.environ.get("FORUM_URL", "http://localhost:6673")
+
+
+def get(path):
+    with urllib.request.urlopen(f"{BASE}{path}", timeout=15) as r:
+        return json.loads(r.read().decode())
+
+
+def post(path, payload):
+    req = urllib.request.Request(
+        f"{BASE}{path}", data=json.dumps(payload).encode(),
+        headers={"Content-Type": "application/json"}, method="POST")
+    with urllib.request.urlopen(req, timeout=15) as r:
+        return json.loads(r.read().decode())
+
+
+def main():
+    p = argparse.ArgumentParser(
+        prog="forum-cli",
+        description="Read and post comments on the course forum.")
+    sub = p.add_subparsers(dest="cmd", required=True)
+
+    sub.add_parser("threads", help="list the forum threads with their ids")
+
+    r = sub.add_parser("read", help="print the comments of one thread")
+    r.add_argument("thread", type=int, help="thread id (see: forum-cli threads)")
+
+    w = sub.add_parser("post", help="post a comment to a thread")
+    w.add_argument("thread", type=int, help="thread id to post into")
+    w.add_argument("--body", required=True, help="the text of the comment")
+    w.add_argument("--author", default="Josep Coll", help="name to sign it with")
+
+    a = p.parse_args()
+    try:
+        if a.cmd == "threads":
+            for t in get("/api/threads"):
+                print(f"{t['id']}\t{t['title']}")
+        elif a.cmd == "read":
+            t = get(f"/api/thread/{a.thread}")
+            print(f"# {t['title']}")
+            for c in t["comments"]:
+                print(f"- [{c['at']}] {c['author']}: {c['body']}")
+        elif a.cmd == "post":
+            res = post(f"/api/thread/{a.thread}/comments",
+                       {"author": a.author, "body": a.body})
+            c = res["comment"]
+            print(f"posted to thread {a.thread} at {c['at']} as {c['author']}")
+    except urllib.error.URLError as e:
+        print(f"forum-cli: cannot reach {BASE}: {e}", file=sys.stderr)
+        return 1
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

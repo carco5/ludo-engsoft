@@ -1,0 +1,6 @@
+Processing request of type ListToolsRequest
+── the MCP registry the model receives ──
+  tool: get_robot_spec  —  Return the spec sheet for an Acme Robotics model (e.g. 'Pallet Pup', 'Shelf Cat').
+
+  prompt_tokens: 157
+✅ The capital of France is Paris.

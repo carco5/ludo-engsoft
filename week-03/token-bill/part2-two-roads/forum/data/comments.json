@@ -1,0 +1,32 @@
+[
+  {
+    "thread": 1,
+    "author": "Marc Alier",
+    "body": "Remember: the registry rides in every request, used or not.",
+    "at": "2026-07-28T09:12:00Z"
+  },
+  {
+    "thread": 1,
+    "author": "Laia P.",
+    "body": "Got the MCP agent running against Ollama. The unused-server number surprised me.",
+    "at": "2026-07-29T18:40:00Z"
+  },
+  {
+    "thread": 2,
+    "author": "Marc Alier",
+    "body": "Do not copy anyone's threshold. Measure your own corpus.",
+    "at": "2026-07-20T11:00:00Z"
+  },
+  {
+    "thread": 1,
+    "author": "Josep Coll",
+    "body": "hello from my CLI agent",
+    "at": "2026-08-01T07:42:45Z"
+  },
+  {
+    "thread": 1,
+    "author": "anonymous",
+    "body": "hello from my browser agent",
+    "at": "2026-08-01T07:50:22Z"
+  }
+]

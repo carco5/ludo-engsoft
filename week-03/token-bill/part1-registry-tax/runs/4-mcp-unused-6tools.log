@@ -1,0 +1,24 @@
+Processing request of type ListToolsRequest
+── the MCP registry the model receives ──
+  tool: get_robot_spec  —  Return the spec sheet for an Acme Robotics model (e.g. 'Pallet Pup', 'Shelf Cat').
+  tool: get_warehouse_map  —  Return the aisle-by-aisle layout of an Acme customer warehouse, including
+    charging docks, racking heights and the no-go zones the robots must avoid.
+    Use the site code printed on the customer contract (e.g. 'GIR-01') and the
+    floor number, counting the ground floor as 0.
+  tool: open_support_ticket  —  Open a support ticket with Acme Robotics field service for a robot that is
+    misbehaving. Severity must be one of 'low', 'normal', 'high' or 'line-down';
+    'line-down' pages the on-call engineer immediately. The summary should say
+    what the robot was doing when the fault appeared. Returns the ticket id.
+  tool: check_battery_health  —  Report the battery health of one robot: charge cycles used, measured
+    capacity against the factory rating, and the date the pack is due for
+    replacement. Use it before promising a customer a full shift of autonomy.
+  tool: schedule_maintenance  —  Book a maintenance slot for a robot with the field-service team. The date
+    must be ISO (YYYY-MM-DD) and the task should name the work to be done, for
+    example 'replace drive wheel' or 'annual safety inspection'. Slots are held
+    for 48 h and then released.
+  tool: list_firmware_versions  —  List the firmware versions available for an Acme robot platform, newest
+    first, marking which one is the current long-term-support release and which
+    ones are withdrawn. Use it before advising a customer to upgrade.
+
+  prompt_tokens: 659
+✅ The capital of France is Paris. However, I don't have access to a function that provides geographical information. If you have any questions about robot specifications, warehouse layouts, support tickets, battery health, maintenance schedules, or firmware versions, feel free to ask!

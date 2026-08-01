@@ -1,0 +1,11 @@
+[project]
+name = "w3-ex2-road-browser"
+version = "0.1.0"
+description = "Week 3 Ex.2 Part 2 — road two: the same task through a Playwright MCP server"
+license = "CC-BY-NC-SA-4.0"
+requires-python = ">=3.10"
+dependencies = [
+    "openai>=1.0.0",
+    "mcp>=1.14,<1.15",
+    "playwright>=1.40",
+]
