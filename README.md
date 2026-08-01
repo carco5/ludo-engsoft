@@ -1,103 +1,109 @@
-# 🎓 Software Engineering Educational Demos
+# Transformers, LLMs, RAG and Agents: From Theory to Production
 
-> **This copy holds Josep Coll's coursework** for the BSC × UPC course *Transformers, LLMs, RAG
-> and Agents: From Theory to Production*. The exercises, apps and measurements I built are
-> indexed in **[STUDENT-WORK.md](STUDENT-WORK.md)** — start there.
->
-> The rest of this README, everything under `demos/`, and the provided tools are the upstream
-> course repository by **Prof. Marc Alier** (<https://github.com/granludo/ludo-engsoft>), kept in
-> sync here so my exercises sit next to the demos they build on. Credit for that material is his;
-> what is mine is listed in the index above.
+**My coursework for the BSC × UPC course of that name** (Barcelona Supercomputing Center ×
+Universitat Politècnica de Catalunya, Prof. Marc Alier) — three RAG and agent applications built
+from scratch, plus the measurements that back every claim in them.
 
-A collection of interactive demos and course materials for teaching software engineering concepts, focusing on LLM APIs and AI integration.
+Every exercise runs **locally on a CPU-only WSL box against Ollama** — no API key, no money. That
+constraint shaped a lot of the results, and where it did, I measured it instead of mentioning it.
 
-This is the **public student-facing companion repo** for the [BSC Agents Course](https://www.bsc.es/) (UPC × BSC AI Factory) and the [AI-Augmented Software Engineering](https://github.com/granludo/) course. Standalone tools at the repo root are reused across multiple weeks and courses; course-specific exercises live under `week-NN/` folders.
+### What I built
 
-## 🗂️ Course materials
-
-| Folder | What's there |
+| | |
 |---|---|
-| [`week-01/`](./week-01/) | **Week 1 — Transformers & LLMs.** Tokenization, base-vs-aligned model comparison (GPT-2 vs Qwen3-1.7B), and the first API call via the [`context-explorer`](./week-01/demos/02-context-explorer/) demo. |
-| [`week-02/`](./week-02/) | **Week 2 — RAG.** The demo ladder from single-file RAG to the embeddings-RAG explorer, plus the provided tools: [`collections-manager`](./week-02/collections-manager/) and [`simple-dynamic-rag`](./week-02/simple-dynamic-rag/). |
-| [`week-03/`](./week-03/) | **Week 3 — Agents.** Function calling (the Three Little Pigs demo), the ~30-line agent loop, and a minimal MCP server. |
-| [`pre-course/`](./pre-course/) | **Before you start.** The [VM setup guide](./pre-course/vm-setup.md) (Ubuntu Server 24.04 + the BSC tool baseline: uv, `llm`, transformers, torch-CPU, opencode, gh) and a [command cheatsheet](./pre-course/cheatsheet.md). |
+| **EASY-CHATGPT** | A chatbot where the browser never touches the model: FastAPI proxy, vanilla-JS frontend, SSE streaming, and a panel showing the exact `messages` array being sent. → [`week-01/ex-05-easy-chatgpt/`](week-01/ex-05-easy-chatgpt/) |
+| **EASY-RAG** | Dynamic RAG end to end: upload → markitdown → chunking → one Chroma collection per assistant → top-K + threshold, with every answer linking back to its source and refusing honestly when nothing scores high enough. → [`week-02/easy-rag/`](week-02/easy-rag/) |
+| **The Token Bill** | An MCP server, a Playwright MCP server, a CLI tool with a skill, and a local forum — built to measure what a mounted-but-unused MCP registry costs, and what the same task costs by CLI versus by browser. → [`week-03/token-bill/`](week-03/token-bill/) |
 
-More weeks land here as the course progresses.
+### Three numbers from it
 
-## 🧰 Demos
+- An MCP registry costs **140 tokens for one tool and 642 for six**, paid on *every* request,
+  used or not — measured against a control run I added because the exercise's own premise did not
+  survive my data.
+- The same task cost **3,573 tokens by CLI against 27,249 by browser: 7.6×** — and I say plainly
+  which of my substitutions make that figure a floor rather than a headline.
+- My RAG rejection threshold is **0.55**, taken from the gap between my own off-topic scores
+  (0.539) and my own real ones (0.61–0.807) — not from a tutorial.
 
-### Context Explorer — [`week-01/demos/02-context-explorer/`](./week-01/demos/02-context-explorer/)
-
-A simple interactive demo to visualize how LLM conversation context works.
-
-**Learn:**
-- How messages accumulate in the context
-- What gets sent to the API on each request
-- Token usage and costs
-
-```bash
-cd week-01/demos/02-context-explorer
-uv venv && source .venv/bin/activate && uv sync
-python context_explorer.py
-```
-
-### Function Calling Demo — [`week-03/demos/01-function-calling/`](./week-03/demos/01-function-calling/)
-
-The Three Little Pigs 🐷🐺 - An interactive demo showing the difference between LLMs with and without function calling.
-
-**Learn:**
-- How to define tools/functions for LLMs
-- When and how LLMs decide to use tools
-- The difference between "talking about actions" vs "taking actions"
-
-```bash
-cd week-03/demos/01-function-calling
-uv venv && source .venv/bin/activate && uv sync
-python three_pigs_function_calling.py
-```
-
-## ⚙️ Configuration
-
-All demos use a `.env` file for configuration:
-
-```bash
-# Required
-OPENAI_API_KEY=your-api-key-here
-
-# Optional: choose model (default: gpt-4.1-mini)
-MODEL=gpt-4.1-mini
-
-# Optional: use alternative OpenAI-compatible API endpoint
-OPENAI_ENDPOINT=http://localhost:11434/v1  # Ollama
-# OPENAI_ENDPOINT=https://your-azure-endpoint.openai.azure.com/v1
-```
-
-### Compatible Endpoints
-
-These demos work with any OpenAI-compatible API:
-- **OpenAI** - Default
-- **Ollama** - Local models (`http://localhost:11434/v1`)
-- **Azure OpenAI** - Enterprise
-- **LM Studio** - Local models
-- **Together AI**, **Groq**, etc.
-
-## 🛠️ Requirements
-
-- Python 3.10+
-- [uv](https://docs.astral.sh/uv/) package manager
-- OpenAI API key (or compatible endpoint)
-
-## 📖 License
-
-This repository is licensed under the [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](LICENSE) (`CC BY-NC-SA 4.0`).
-
-## 👤 Author
-
-[@granludo](https://github.com/granludo) - Marc Alier
-
+> The `demos/` folders and the provided tools belong to the upstream course repository by
+> **Prof. Marc Alier** (<https://github.com/granludo/ludo-engsoft>), kept in sync here so my
+> exercises sit next to the demos they build on. His original README is preserved as
+> [COURSE-README.md](COURSE-README.md). Everything indexed below is mine.
 
 ---
 
-© 2026 **Marc Alier i Forment** (Universitat Politècnica de Catalunya) · <https://wasabi.essi.upc.edu/ludo> · <https://lamb-project.org>
-BSC Agents Course — *Transformers, LLMs, RAG and Agents: From Theory to Production*.
-Licensed under [Creative Commons BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/): reuse must credit the author, no commercial use, derivatives under the same license.
+## Week 1 — Transformers, LLMs and the API call · [week index](week-01/MY-WORK.md)
+
+| # | What I built | Where | Report |
+|---|---|---|---|
+| 1–4 | Tokenizers by hand, base vs. aligned models (GPT-2 vs. Qwen3-1.7B), and the bare API call in `curl` and in Python | [`week-01/ex-01-tokenise/`](week-01/ex-01-tokenise/) · [`ex-02-base-vs-aligned/`](week-01/ex-02-base-vs-aligned/) · [`ex-04-call-the-llm/`](week-01/ex-04-call-the-llm/) | [`entrega-w1.md`](week-01/entrega-w1.md) |
+| 5 | **EASY-CHATGPT** — a chatbot with a FastAPI proxy (the browser never touches the model), vanilla-JS frontend, markdown rendering, a live view of the exact `messages` array sent, and SSE streaming; `docker compose up` | [`week-01/ex-05-easy-chatgpt/`](week-01/ex-05-easy-chatgpt/) | [`entrega-w5.md`](week-01/ex-05-easy-chatgpt/entrega-w5.md) |
+
+**Measured:** the same paragraph costs **+66 % tokens in Spanish** than in English with the
+GPT-2 tokenizer — the multilingual penalty, on my own text.
+
+## Week 2 — RAG · [week index](week-02/MY-WORK.md)
+
+| # | What I built | Where | Report |
+|---|---|---|---|
+| 1 | **EASY-ASSISTANT** — assistants defined by a system prompt + a prompt template, grounded on a single whole file, with the filled-in prompt and the token count on screen | [`week-02/ex-01-easy-assistant/`](week-02/ex-01-easy-assistant/) | [`entrega-w2-ex1.md`](week-02/ex-01-easy-assistant/entrega-w2-ex1.md) |
+| 2–3 | Embeddings explorer, collections, ingestion and threshold experiments | [`week-02/`](week-02/) | [`entrega-w2-ex2.md`](week-02/entrega-w2-ex2.md) · [`entrega-w2-ex3.md`](week-02/entrega-w2-ex3.md) |
+| Final | **EASY-RAG** — dynamic RAG: upload → markitdown → chunking (`sections(level=2)` with a char fallback) → one Chroma collection per assistant → top-K + threshold retrieval, answers that **link back to the source** and refuse honestly when nothing scores high enough | [`week-02/easy-rag/`](week-02/easy-rag/) | [`entrega-w2-final.md`](week-02/easy-rag/entrega-w2-final.md) |
+
+**Measured:** on my own corpus with `nomic-embed-text`, an off-topic question tops out at **0.462**
+in English but **0.539** in Spanish — sharing the corpus's language raises similarity by itself —
+while a real question's chunks land at **0.61–0.807**. So I set the rejection threshold at
+**0.55**, in the gap, from my numbers rather than from a tutorial's.
+
+**Found the hard way:** embeddings capture *topic*, not *polarity* — *"I love this film"* and
+*"I hate this film"* score **0.706** against each other, each the other's nearest neighbour.
+
+## Week 3 — Agents · [week index](week-03/MY-WORK.md)
+
+| # | What I built | Where | Report |
+|---|---|---|---|
+| 1 | **The Straw House Emergency** — the function-calling demo restaged: the youngest pig, in the straw house, whose only tool is a phone to his elder brother in the brick house. My own tool schema, with the *when not to call* written into the description | [`week-03/straw-house/`](week-03/straw-house/) | [`entrega-w3-ex1.md`](week-03/entrega-w3-ex1.md) |
+| 2 | **The Token Bill** — what a mounted-but-unused MCP registry costs, and what the same task costs through a CLI versus through a browser. Includes a local forum, a `forum-cli` + a skill, and a Playwright MCP server I wrote | [`week-03/token-bill/`](week-03/token-bill/) | [`entrega-w3-ex2.md`](week-03/entrega-w3-ex2.md) |
+
+**Measured — the MCP registry tax** (`prompt_tokens` of the first call, same 17-token question):
+
+| no `tools` at all | 1 tool mounted, unused | 6 tools mounted, unused |
+|---|---|---|
+| 17 | 157 | 659 |
+
+So the registry costs **140 tokens for one tool and 642 for six**, paid on *every* request,
+used or not. Ten servers like that = 6,420 tokens per request → **321,000 over a fifty-turn
+chat**, before anyone says anything.
+
+**Measured — CLI vs. browser**, same task, both through one LiteLLM proxy:
+**3,573 tokens by CLI against 27,249 by browser — 7.6×**.
+
+**Where I disagreed with the brief:** the exercise says baseline-minus-mounted *"is roughly the
+registry"*. In my setup it comes out **negative**, because the baseline loop already carries two
+hand-written tool schemas and a system prompt. I added a control run with no `tools` field at all
+to establish the real floor — and that also shows the charge is not an *MCP* charge but a
+tools-in-the-context charge.
+
+---
+
+## What running everything on a CPU box taught me
+
+Lecture 3.2 ends on *"the loop is trivial; the driver is not."* Week 3 turned that into the
+binding constraint of the week, so I measured it. Same file, same prompt, same tool:
+
+| model | plain `knock knock` | the real threat | verdict |
+|---|---|---|---|
+| `qwen3:1.7b` | **calls** the brother ❌ | calls ✅ | panics at a knock |
+| `llama3.2:3b` | **calls** the brother ❌ | calls ✅ | same |
+| `qwen2.5:3b` | doesn't call ✅ | **says** it will call, doesn't ❌ | fails the other way |
+| `qwen3:4b` | — | — | thinks for hundreds of tokens at 2.7 tok/s; never finishes a turn |
+| **`qwen2.5:7b`** | doesn't call ✅ | **calls** ✅ | the one I used |
+
+Two operational findings that are not in any of the lectures:
+
+- **Through a LiteLLM proxy, `qwen3`'s reasoning is stripped and `content` arrives empty**, so an
+  agent loop sees a blank answer and stops on turn one. For agents on this machine: non-thinking
+  models only.
+- **Memory decides everything.** Ollama will happily hold two models resident; with 7.6 GB of RAM
+  that pushes the big one into swap and it never completes a turn. `ollama stop` everything else
+  first and `qwen2.5:7b` loads in 33 s and runs at 2.3 tok/s — slow, but usable.
